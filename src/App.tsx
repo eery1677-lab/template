@@ -9,8 +9,6 @@ import {
 import { Navbar } from './components/Navbar';
 import { ScrambleIn } from './components/ScrambleText';
 import { useAuth } from './contexts/AuthContext';
-import { createOrder } from './lib/firestore';
-import { PRODUCTS } from './lib/paypal';
 import { VIDEO_URLS } from './config/videos';
 import { SITE_CONFIG } from './config/content';
 import { AiToolCard, AiTool } from './components/AiToolCard';

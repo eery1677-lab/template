@@ -15,7 +15,7 @@ interface AuthModalProps {
 }
 
 export function AuthModal({ isOpen, onClose }: AuthModalProps) {
-  const { signInWithGoogle, signInWithApple, signInWithEmail, signUpWithEmail, error, clearError } =
+  const { signInWithGoogle, signInWithEmail, signUpWithEmail, error, clearError } =
     useAuth();
   const [mode, setMode] = useState<'login' | 'signup'>('login');
   const [email, setEmail] = useState('');
