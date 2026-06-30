@@ -129,14 +129,6 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                 </svg>
                 Continue with Google
               </button>
-
-              <button
-                onClick={handleApple}
-                className="w-full h-[48px] rounded-lg bg-white/[0.07] border border-white/10 text-white text-[14px] font-medium flex items-center justify-center gap-3 hover:bg-white/[0.12] active:scale-[0.98] transition-all cursor-pointer"
-              >
-                <i className="bi bi-apple text-[18px]" />
-                Continue with Apple
-              </button>
             </div>
 
             {/* Divider */}
