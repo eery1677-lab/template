@@ -48,15 +48,6 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
     }
   };
 
-  const handleApple = async () => {
-    try {
-      await signInWithApple();
-      onClose();
-    } catch {
-      // error handled in context
-    }
-  };
-
   return (
     <AnimatePresence>
       {isOpen && (

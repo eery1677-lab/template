@@ -8,8 +8,6 @@ import {
 } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { ScrambleIn } from './components/ScrambleText';
-import { ConnectAILabLogo } from './components/ConnectAILabLogo';
-import PayPalCheckoutButton from './components/payment/PayPalCheckoutButton';
 import { useAuth } from './contexts/AuthContext';
 import { createOrder } from './lib/firestore';
 import { PRODUCTS } from './lib/paypal';
@@ -98,34 +96,6 @@ export default function App() {
   useEffect(() => {
     fetchTools();
   }, [fetchTools]);
-
-  /* ── PayPal 결제 완료 → Firestore 저장 ── */
-  const handlePayPalSuccess = useCallback(
-    async (details: any, productId: string, productName: string, amount: string) => {
-      const orderId = details.id || `pp_${Date.now()}`;
-      try {
-        await createOrder({
-          id: orderId,
-          userId: user?.uid || 'anonymous',
-          productId,
-          productName,
-          amount: parseFloat(amount),
-          currency: 'USD',
-          status: 'completed',
-          paypalOrderId: orderId,
-          paypalPayerId: details.payer?.payer_id || '',
-        });
-        console.log('[Firestore] Order saved:', orderId);
-        alert(`✅ Payment Completed! Order: ${orderId}. Please submit your tool now.`);
-        setInitialPlan(productId === PRODUCTS[0].id ? 'express' : 'featured');
-        setIsSubmitModalOpen(true);
-      } catch (err) {
-        console.error('[Firestore] Failed to save order:', err);
-        alert(`결제 완료되었으나 기록 실패: ${orderId}`);
-      }
-    },
-    [user]
-  );
 
   /* ── Hero video mouse-scrub ── */
   const heroVideoRef = useRef<HTMLVideoElement>(null);
